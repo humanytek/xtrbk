@@ -62,7 +62,7 @@ class ProductTemplate(models.Model):
     def upload_product_to_shopify(self):
         for line in self:
             upload_data = line.get_shopify_data_upload()
-            _logger.info(_("upload data %s") % upload_data.title)
+            _logger.info(("upload data %s") % upload_data)
             if upload_data:
                 headers = {'Content-Type': 'application/json'}
                 data_json = json.dumps({'params': upload_data})
