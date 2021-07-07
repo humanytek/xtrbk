@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_company_form_inherit_odoo_shopify_synchronisation" model="ir.ui.view">
+            <field name="name">view.company.form.inherit.odoo.shopify.synchronisation</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="shopify_post_url"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_company_inherit_upload_product_to_shopify" model="ir.ui.view">
+            <field name="name">res.company.inherit.upload.product.to.shopify</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="shopify_product_upload_url"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
