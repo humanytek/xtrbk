@@ -62,7 +62,6 @@ class ProductTemplate(models.Model):
     def upload_product_to_shopify(self):
         for line in self:
             upload_data = line.get_shopify_data_upload()
-            _logger.info(("upload data %s") % upload_data)
             if upload_data:
                 headers = {'Content-Type': 'application/json'}
                 data_json = json.dumps({'params': upload_data})
@@ -70,7 +69,6 @@ class ProductTemplate(models.Model):
                 try:
                     shopify_product_upload_url = self.env.user.company_id.shopify_product_upload_url
                     _logger.info(_("url %s") % shopify_product_upload_url)
-                    _logger.info(_("data %s") % data_json)
                     _logger.info(_("headers %s") % headers)
                     requests.post(url=shopify_product_upload_url, data=data_json, headers=headers)
                 except Exception as e:
