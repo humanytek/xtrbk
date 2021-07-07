@@ -254,7 +254,8 @@ class ShopifyOdooProductUploadResponse(http.Controller):
                     if response_variant.get('sku'):
                         _logger.info("Iterating variants:")
                         for variant in product_template_id.product_variant_ids:
-                            _logger.info("Im searching in variants")
+                            _logger.info("Variant code %s" % variant.default_code)
+                            _logger.info("Payload sku %s" % response_variant['sku'])
                             if variant.default_code == response_variant['sku']:
                                 variant.shopify_variant_id = response_variant.get('variant_id')
                                 variant.shopify_inventory_item_id = response_variant.get('inventory_item_id')
